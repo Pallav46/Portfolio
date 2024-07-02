@@ -136,3 +136,21 @@ window.addEventListener('scroll', () => {
 
 // Initial check for elements in view
 handleScrollAnimation();
+
+
+let lastScrollTop = 0;
+const navbar = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (scrollTop > lastScrollTop) {
+    // Downscroll
+    navbar.classList.add('hidden');
+  } else {
+    // Upscroll
+    navbar.classList.remove('hidden');
+  }
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+});
